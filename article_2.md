@@ -106,6 +106,11 @@ FROM nginx:1.30-alpine AS runner
 # Elle ne contient pas Node.js, c'est voulu.
 # Taille de base : ~8 Mo.
 
+RUN rm -rf /usr/share/nginx/html/*
+# Le "COPY" de Docker fusionne le contenu dans le dossier cible au lieu de le remplacer.
+# Le répertoire par défaut de Nginx contient des fichiers qui ne seront pas remplacés, donc resteront.
+# Ici, le "50x.html". On supprime donc tout le contenu du répertoire.
+
 COPY --from=builder /app/out /usr/share/nginx/html
 # On récupère uniquement le dossier out/ produit par le stage builder.
 # Tout le reste (node_modules, code source, outils de build) est abandonné.

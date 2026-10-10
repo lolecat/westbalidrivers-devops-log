@@ -70,9 +70,9 @@ New-AzADAppFederatedCredential `
   -Audience "api://AzureADTokenExchange"
 ```
 
-**Point d'attention sur `-Subject`** : la comparaison faite par Azure est sensible à la casse et strictement littérale, aucune règle floue ni wildcard sur ce type de credential. Un run déclenché depuis une autre branche, un tag, ou une pull request ne matchera jamais ce `Subject`, et l'authentification échouera avec une erreur `AADSTS700213: No matching federated identity record found`. C'est le comportement voulu ici : seule la branche `staging` doit pouvoir s'authentifier.
+**Point d'attention sur `-Subject`** : la comparaison faite par Azure est sensible à la casse et strictement littérale, aucune règle floue ni wildcard sur ce type de credential. Un run déclenché depuis une autre branche, un tag, ou une pull request ne matchera jamais ce Subject, et l'authentification échouera avec une erreur `AADSTS700213: No matching federated identity record found`. C'est le comportement voulu ici : seule la branche staging doit pouvoir s'authentifier.
 
-> D'autres formats de `-Subject` existent pour d'autres cas d'usage (`repo:<owner>/<repo>:environment:<nom>` pour les environnements GitHub, `repo:<owner>/<repo>:pull_request` pour les PR, etc.). On reste ici sur le format le plus simple, un seul `Subject` pour une seule branche, cohérent avec un pipeline où chaque branche a un rôle strictement défini.
+> D'autres formats de "-Subject" existent pour d'autres cas d'usage (`repo:<owner>/<repo>:environment:<nom>` pour les environnements GitHub, `repo:<owner>/<repo>:pull_request` pour les PR, etc.). On reste ici sur le format le plus simple, un seul `Subject` pour une seule branche, cohérent avec un pipeline où chaque branche a un rôle strictement défini.
 
 <br>
 
@@ -233,7 +233,7 @@ L'image de la révision active doit porter le tag `sha-...` correspondant au der
 ## Checklist avant de passer à la suite
 
 - [X] L'app registration `gh-actions-westbalidrivers` existe, avec un service principal associé
-- [X] La fédération d'identité est configurée, scopée à `repo:lolecat/WestBaliDrivers:ref:refs/heads/staging`
+- [X] La fédération d'identité est configurée, scopée à `repo:lolecat@ID/WestBaliDrivers@ID:ref:refs/heads/staging`
 - [X] Le service principal a les rôles `AcrPush` (sur l'ACR) et `Container Apps Contributor` (sur la Container App), et rien de plus
 - [X] Les 4 secrets sont renseignés dans GitHub (`AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, `AZURE_SUBSCRIPTION_ID`, `MAPBOX_TOKEN`)
 - [X] Un push sur `staging` déclenche le workflow et le fait passer intégralement au vert

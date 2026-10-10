@@ -1,0 +1,270 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="tvnD9LgwLNpHbNGDfC34">
+    <mxGraphModel dx="878" dy="279" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=22;fontStyle=1;align=left;" value="West Bali Drivers, Pipeline CI/CD" vertex="1">
+          <mxGeometry height="30" width="700" as="geometry" />
+        </mxCell>
+        <mxCell id="cloud" parent="1" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#e6f2fb;strokeColor=#4d8ec3;verticalAlign=top;spacingTop=20;fontStyle=1;fontSize=12;pointerEvents=0;" value="" vertex="1">
+          <mxGeometry height="200" width="540" x="870" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_entra" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=https://app.diagrams.net/img/lib/azure2/other/Entra_Identity.svg;" value="" vertex="1">
+          <mxGeometry height="40" width="46" x="962" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c_entra" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4d8ec3;fontSize=10;align=left;" value="&lt;blockquote style=&quot;margin: 0px 0px 0px 15px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; padding: 0px;&quot;&gt;&lt;b&gt;Entra ID&lt;br&gt;&lt;/b&gt;Fédération OIDC&lt;br&gt;&lt;font style=&quot;font-size: 9px&quot;&gt;identités staging + prod&lt;br&gt;&lt;/font&gt;&lt;font style=&quot;font-size: 9px&quot;&gt;aucun secret statique&lt;/font&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="55" width="130" x="1008" y="72.5" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_acr" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=https://app.diagrams.net/img/lib/azure2/containers/Container_Registries.svg;" value="" vertex="1">
+          <mxGeometry height="43" width="48" x="1152" y="78.5" as="geometry" />
+        </mxCell>
+        <mxCell id="c_acr" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4d8ec3;fontSize=10;align=left;" value="&lt;blockquote style=&quot;margin: 0px 0px 0px 15px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; padding: 0px;&quot;&gt;&lt;b&gt;Container Registry&lt;br&gt;&lt;/b&gt;acrwestbalidrivers&lt;br&gt;&lt;font style=&quot;font-size: 9px&quot;&gt;tags : staging + sha-&amp;lt;hash&amp;gt; + vX.Y.Z&lt;/font&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="55" width="140" x="1200" y="72.5" as="geometry" />
+        </mxCell>
+        <mxCell id="zA" parent="1" style="swimlane;horizontal=0;startSize=50;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;pointerEvents=0;strokeWidth=2;" value="DEV : poste local (WSL2)" vertex="1">
+          <mxGeometry height="500" width="380" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" parent="zA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=11;" value="&lt;b&gt;Code source&lt;/b&gt;&lt;br&gt;Next.js (output: export) + TypeScript" vertex="1">
+          <mxGeometry height="55" width="290" x="70" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" parent="zA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f0ff;strokeColor=#6c8ebf;fontSize=11;" value="&lt;b&gt;docker compose up&lt;/b&gt;&lt;br&gt;stage &lt;i&gt;dev&lt;/i&gt;&amp;nbsp;: &quot;hot reload&quot;, volume monté" vertex="1">
+          <mxGeometry height="60" width="290" x="70" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" parent="zA" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=#999999;fontColor=#666666;fontSize=11;" value="&lt;b&gt;Branche dev&lt;/b&gt;&lt;br&gt;100 % locale, jamais déployée" vertex="1">
+          <mxGeometry height="55" width="290" x="70" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" parent="zA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="&lt;b&gt;Validation manuelle avant automatisation&lt;/b&gt;&lt;br&gt;&lt;i&gt;docker build --target runner --build-arg &amp;lt;...&amp;gt;&lt;br&gt;&lt;/i&gt;Puis premier push vers l&#39;ACR" vertex="1">
+          <mxGeometry height="90" width="290" x="70" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" edge="1" parent="zA" source="a1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;libavoidRouting=1;orthogonalLoop=1;jettySize=auto;" target="a2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e18" edge="1" parent="zA" source="a2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#999999;libavoidRouting=1;orthogonalLoop=1;jettySize=auto;" target="a3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zS" parent="1" style="swimlane;horizontal=0;startSize=50;html=1;fillColor=#eef7ec;strokeColor=#82b366;fontStyle=1;fontSize=14;pointerEvents=0;strokeWidth=2;" value="STAGING" vertex="1">
+          <mxGeometry height="240" width="1240" x="430" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="azS" parent="zS" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;arcSize=6;fillColor=none;strokeColor=#4d8ec3;verticalAlign=top;align=left;spacingLeft=10;fontSize=11;fontColor=#4d8ec3;pointerEvents=0;" value="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; rg-westbalidrivers" vertex="1">
+          <mxGeometry height="195" width="830" x="380" y="25" as="geometry" />
+        </mxCell>
+        <mxCell id="ca" parent="azS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=11;align=left;" value="&lt;blockquote style=&quot;margin: 0px 0px 0px 40px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; padding: 0px;&quot;&gt;&lt;b&gt;ca-westbalidrivers-staging&lt;br&gt;&lt;/b&gt;env. &lt;i&gt;cae-westbalidrivers&lt;br&gt;&lt;/i&gt;Nginx + export statique&lt;br&gt;0.25 vCPU / 0.5 Gio, ingress port 80&lt;br&gt;min 0 / max 1 → &lt;b&gt;scale-to-zero&lt;/b&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="120" width="250" x="110" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="mi" parent="azS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=10;align=left;" value="&lt;blockquote style=&quot;margin: 0px 0px 0px 20px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; padding: 0px;&quot;&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;id-westbalidrivers-staging&lt;br&gt;&lt;/b&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;identité managée user-assigned&lt;br&gt;&lt;/span&gt;rôle &lt;i&gt;AcrPull,&lt;/i&gt;&amp;nbsp;moindre privilège&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="60" width="200" x="520" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="auth" parent="azS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="&lt;b&gt;Easy Auth (Entra ID)&lt;/b&gt;&lt;br&gt;sidecar d&#39;authentification&lt;br&gt;accès restreint au tenant" vertex="1">
+          <mxGeometry height="60" width="200" x="520" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="azS" source="mi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#4d8ec3;orthogonalLoop=1;jettySize=auto;" target="ca">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="75" />
+              <mxPoint x="380" y="75" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="azS" source="auth" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#d79b00;libavoidRouting=1;orthogonalLoop=1;jettySize=auto;" target="ca">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="145" />
+              <mxPoint x="440" y="95" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KJs0qj-GsCX7Twcrfe1M-3" parent="azS" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/ResourceGroup.svg;" value="" vertex="1">
+          <mxGeometry height="20" width="25" x="10" y="5" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_mi" parent="azS" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=https://app.diagrams.net/img/lib/azure2/identity/Entra_Managed_Identities.svg;" value="" vertex="1">
+          <mxGeometry height="39" width="44" x="500" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_cae" parent="azS" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=https://app.diagrams.net/img/lib/azure2/other/Container_App_Environments.svg;" value="" vertex="1">
+          <mxGeometry height="48" width="48" x="90" y="25" as="geometry" />
+        </mxCell>
+        <mxCell id="zP" parent="1" style="swimlane;horizontal=0;startSize=50;html=1;fillColor=#fdeeed;strokeColor=#b85450;fontStyle=1;fontSize=14;pointerEvents=0;strokeWidth=2;" value="PROD" vertex="1">
+          <mxGeometry height="240" width="1240" x="430" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="azP" parent="zP" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;arcSize=6;fillColor=none;strokeColor=#4d8ec3;verticalAlign=top;align=left;spacingLeft=10;fontSize=11;fontColor=#4d8ec3;pointerEvents=0;" value="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; rg-westbalidrivers" vertex="1">
+          <mxGeometry height="195" width="830" x="380" y="25" as="geometry" />
+        </mxCell>
+        <mxCell id="swa" parent="azP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;fontSize=11;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;b&gt;Azure Static Web Apps&lt;br&gt;&lt;/b&gt;sert l&#39;export statique validé en staging&lt;br&gt;CDN mondial, HTTPS + domaine custom inclus&lt;br&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;aucun container en exécution, aucun rebuild&lt;/font&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="105" width="290" x="220" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="KJs0qj-GsCX7Twcrfe1M-4" parent="azP" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/ResourceGroup.svg;" value="" vertex="1">
+          <mxGeometry height="20" width="25" x="10" y="5" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_swa" parent="azP" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=https://app.diagrams.net/img/lib/azure2/preview/Static_Apps.svg;" value="" vertex="1">
+          <mxGeometry height="46" width="58" x="200" y="25" as="geometry" />
+        </mxCell>
+        <mxCell id="ghbox" parent="1" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;arcSize=6;fillColor=#ffffff;strokeColor=#666666;pointerEvents=0;" value="" vertex="1">
+          <mxGeometry height="455" width="310" x="490" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_gh" parent="1" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.weblogos.github" value="" vertex="1">
+          <mxGeometry height="44" width="44" x="500" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="b1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#666666;fontSize=11;" value="&lt;b&gt;GitHub&lt;/b&gt;&amp;nbsp;: dépôt privé&lt;br&gt;WestBaliDrivers" vertex="1">
+          <mxGeometry height="45" width="215" x="565" y="282" as="geometry" />
+        </mxCell>
+        <mxCell id="b2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="Branche &lt;b&gt;staging&lt;/b&gt;" vertex="1">
+          <mxGeometry height="35" width="270" x="510" y="346" as="geometry" />
+        </mxCell>
+        <mxCell id="b3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;arcSize=12;" value="&lt;b&gt;Actions - staging.yml&lt;/b&gt;&lt;br&gt;1. Login Azure via OIDC&lt;br&gt;2. docker build --target runner&lt;br&gt;3. push : tags staging + sha-&amp;lt;hash&amp;gt;&lt;br&gt;4. mise à jour de la révision" vertex="1">
+          <mxGeometry height="90" width="270" x="510" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="b4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" value="Branche &lt;b&gt;main&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="270" x="510" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="b4t" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="&lt;b&gt;Tag Git annoté vX.Y.Z&lt;/b&gt; (à la main)&lt;br&gt;&lt;font style=&quot;font-size: 9px&quot;&gt;posé sur le commit validé en staging&lt;/font&gt;" vertex="1">
+          <mxGeometry height="34" width="270" x="510" y="556" as="geometry" />
+        </mxCell>
+        <mxCell id="b5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" value="&lt;b&gt;Actions - production.yml&lt;/b&gt;&lt;br&gt;&lt;i&gt;workflow_dispatch&lt;/i&gt;, input : version&lt;br&gt;1. Login Azure via OIDC (identité prod)&lt;br&gt;2. tag ACR vX.Y.Z sur sha-&amp;lt;hash&amp;gt; (même digest)&lt;br&gt;3. extraction des fichiers de l&#39;image&lt;br&gt;4. + staticwebapp.config.json (depuis main)&lt;br&gt;5. déploiement Static Web Apps&lt;br&gt;6. smoke test" vertex="1">
+          <mxGeometry height="108" width="270" x="510" y="606" as="geometry" />
+        </mxCell>
+        <mxCell id="e5t" edge="1" parent="1" source="b4t" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b85450;strokeWidth=2;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="b5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" edge="1" parent="1" source="b5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b85450;strokeWidth=2;startArrow=classic;startFill=1;fontSize=10;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0.86;entryY=1;entryDx=0;entryDy=0;" target="c_acr" value="pull sha-&amp;lt;hash&amp;gt; / push vX.Y.Z">
+          <mxGeometry relative="1" x="0.2295" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="860" y="629" />
+              <mxPoint x="860" y="190" />
+              <mxPoint x="1320" y="190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#999999;fontSize=11;" value="&lt;b&gt;Légende&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#82b366&quot;&gt;━&lt;/font&gt; chaîne staging (conteneurisée)&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#b85450&quot;&gt;━&lt;/font&gt; chaîne production (statique)&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#4d8ec3&quot;&gt;- - -&lt;/font&gt; identité / authentification" vertex="1">
+          <mxGeometry height="45" width="800" y="765" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="a1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;orthogonalLoop=1;jettySize=auto;" target="b1" value="git push">
+          <mxGeometry relative="1" x="0.1732" y="10" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="450" y="300" />
+              <mxPoint x="450" y="260" />
+              <mxPoint x="673.04" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="b1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#82b366;strokeWidth=2;orthogonalLoop=1;jettySize=auto;" target="b2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="672.5" y="340" />
+              <mxPoint x="672.5" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#82b366;strokeWidth=2;libavoidRouting=1;orthogonalLoop=1;jettySize=auto;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="672.38" y="381" as="sourcePoint" />
+            <mxPoint x="672.38" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b85450;strokeWidth=2;fontSize=10;orthogonalLoop=1;jettySize=auto;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="b4" value="merge --ff-only">
+          <mxGeometry relative="1" x="0.431" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="565" y="320" />
+              <mxPoint x="500" y="320" />
+              <mxPoint x="500" y="490" />
+              <mxPoint x="645" y="490" />
+            </Array>
+            <mxPoint x="565" y="320" as="sourcePoint" />
+            <mxPoint x="554" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="b4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b85450;strokeWidth=2;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="b4t">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="b3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#82b366;strokeWidth=2;orthogonalLoop=1;jettySize=auto;" target="c_acr" value="docker push">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="820" y="435.03" />
+              <mxPoint x="820" y="202" />
+              <mxPoint x="1270" y="202" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="b3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#82b366;strokeWidth=2;libavoidRouting=1;orthogonalLoop=1;jettySize=auto;" target="ca" value="nouvelle révision">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="435" />
+              <mxPoint x="850" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="c_acr" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#82b366;strokeWidth=2;orthogonalLoop=1;jettySize=auto;" target="ca" value="pull image">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1270" y="230" />
+              <mxPoint x="1015.03" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="mi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#4d8ec3;orthogonalLoop=1;jettySize=auto;" target="c_acr" value="AcrPull">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1370" y="220" />
+              <mxPoint x="1280" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="b5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b85450;strokeWidth=2;orthogonalLoop=1;jettySize=auto;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="swa" value="déploie les fichiers extraits (SWA CLI)">
+          <mxGeometry relative="1" x="0.04" y="-11" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="870" y="648.75" />
+              <mxPoint x="870" y="648.75" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e19" edge="1" parent="1" source="a4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#d6b656;fontSize=10;orthogonalLoop=1;jettySize=auto;" target="c_acr" value="premier push manuel">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="410" y="595.03" />
+              <mxPoint x="410" y="215.03" />
+              <mxPoint x="1260" y="215.03" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KJs0qj-GsCX7Twcrfe1M-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontStyle=1" value="Azure - Services transverses" vertex="1">
+          <mxGeometry height="30" width="170" x="1070" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="u2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" value="Visiteurs du site&lt;br&gt;&lt;font style=&quot;font-size: 9px&quot;&gt;public, non authentifié&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="145" x="1330" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="u2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#d79b00;strokeWidth=2;libavoidRouting=1;orthogonalLoop=1;jettySize=auto;" target="swa" value="HTTPS&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1403" y="623" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KJs0qj-GsCX7Twcrfe1M-5" parent="1" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.users.users;fillColor=#2072B8;" value="" vertex="1">
+          <mxGeometry height="50" width="46" x="1450" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="u1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" value="Équipe / testeurs&lt;br&gt;&lt;font style=&quot;font-size: 9px&quot;&gt;compte du tenant Entra&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="145" x="1530" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="u1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#d79b00;orthogonalLoop=1;jettySize=auto;" target="auth" value="login Entra">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1602.5" y="760" />
+              <mxPoint x="1700" y="760" />
+              <mxPoint x="1700" y="405" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-SC0XRrE--bqAjC7LNpb-3" parent="1" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.users.user;fillColor=#2072B8;" value="" vertex="1">
+          <mxGeometry height="39" width="25" x="1660" y="805.5" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

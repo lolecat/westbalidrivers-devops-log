@@ -1,5 +1,7 @@
 # Mettre en place un pipeline CI/CD sur Azure, partie 3 : Azure Container Registry
 
+<br>
+
 ## Qu'est-ce qu'un registre de containers ?
 
 Un registre de containers est un entrepôt centralisé pour stocker et distribuer des images Docker. Si Docker Hub est l'équivalent public (comme GitHub pour le code), **Azure Container Registry (ACR)** est son équivalent privé hébergé dans votre tenant Azure.
@@ -13,7 +15,7 @@ Dans notre pipeline, ACR joue le rôle de **point de vérité unique** pour les 
 
 Un point à garder en tête : ACR n'intervient que pour l'environnement staging. La branche `dev` reste strictement locale (voir l'article 1), et la production, elle, ne consomme jamais d'image. Azure Static Web Apps déploie directement le dossier `out/` généré par `next build`, sans passer par Docker ni par un registre. ACR n'est donc pas le point de passage universel de tout le pipeline, mais celui de sa seule étape conteneurisée.
 
----
+<br>
 
 ## Pourquoi ACR plutôt que Docker Hub ?
 
@@ -24,7 +26,7 @@ Docker Hub est public par défaut et le passage en privé est payant au-delà d'
 - **Géolocalisation** : ACR est déployé dans la même région que vos autres ressources, ce qui garantit une latence minime au pull
 - **Rétention et nettoyage** : des politiques de rétention permettent de supprimer automatiquement les vieilles images pour maîtriser les coûts de stockage
 
----
+<br>
 
 ## Création de l'ACR
 
@@ -91,7 +93,7 @@ acrwestbalidrivers    acrwestbalidrivers.azurecr.io        Basic
 ```
 L'adresse `acrwestbalidrivers.azurecr.io` est le endpoint depuis lequel Docker pourra pousser et récupérer des images.
 
----
+<br>
 
 ## Stratégie de tagging
 
@@ -115,7 +117,7 @@ acrwestbalidrivers.azurecr.io/westbalidrivers:staging
 acrwestbalidrivers.azurecr.io/westbalidrivers:sha-abc1234
 ```
 
----
+<br>
 
 ## Premier push manuel
 
@@ -200,7 +202,7 @@ Status: Downloaded newer image for acrwestbalidrivers.azurecr.io/westbalidrivers
 
 Le site doit répondre sur `http://localhost:8080`, exactement comme lors du test local au chapitre précédent, mais cette fois l'image provient du registre Azure.
 
----
+<br>
 
 ## Politique de rétention (optionnel mais recommandé)
 
